@@ -1,11 +1,11 @@
 public class Student {
-	String surname;
-	String givenname;
-	String id;
-	float score;
-	String grade;
-	int credit;
-	float gpa;
+	private String surname;
+	private String givenname;
+	private String id;
+	private float score;
+	private String grade;
+	private int credit;
+	private float gpa;
 
 	public String getSurname() {
 		return surname;

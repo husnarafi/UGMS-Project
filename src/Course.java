@@ -1,8 +1,8 @@
 
 public class Course {
-	String courseCode;
-	int courseCredit;
-	int numberOfStudents;
+	private String courseCode;
+	private int courseCredit;
+	private int numberOfStudents;
 
 	public String getCourseCode() {
 		return courseCode;
@@ -27,8 +27,5 @@ public class Course {
 	public void setNumberOfStudents(int numberOfStudents) {
 		this.numberOfStudents = numberOfStudents;
 	}
-	
-	
-	
-	
+
 }
