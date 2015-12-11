@@ -8,7 +8,7 @@ public class GradingSystem {
 
 	
 	
-	private static final String FILEPATH = "/Users/husnarafi/Developer/Workspace/Java/GradingSystem/Course1.txt";
+	private static final String FILEPATH = "./Course1.txt";
 	
 	public static void main(String[] args) {
 
