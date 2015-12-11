@@ -20,35 +20,40 @@ public class GradingSystem {
 		 * :Zhen,Ben,1109853Z-I011-1234,43.46
 		 */
 
-		try (BufferedReader br = new BufferedReader(new FileReader(FILEPATH))) {
+		Course course = gradingSystem.readCourseFile(FILEPATH);
 
+	}
+
+	private Course readCourseFile(String filePath) {
+
+		Course course = null;
+
+		try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
+
+			Student student;
 			int lineCounter = 1;
 
-			Course course = new Course();
-			Student student = new Student();
-
 			for (String line; (line = br.readLine()) != null;) {
-				System.out.println(lineCounter + ":" + line);
+
+				course = new Course();
+				student = new Student();
 
 				if (lineCounter == 1) {
-					String[] arr = line.split(",");
 
-					// array 2
+					String[] arr = line.split(",");
 					String courseCode = arr[0];
 					int courseCredit = Integer.parseInt(arr[1]);
 
 					course.setCourseCode(courseCode);
 					course.setCourseCredit(courseCredit);
 
-					System.out.println("Course code : " + courseCode);
-					System.out.println("Course credit : " + courseCredit);
-
 				} else if (lineCounter == 2) {
+
 					int numberOfStudents = Integer.parseInt(line);
 					course.setNumberOfStudents(numberOfStudents);
-					System.out.println("Number of Students :" + numberOfStudents);
 
 				} else if (lineCounter > 2) {
+
 					String[] arr = line.split(",");
 					String studentSurname = arr[0];
 					String studentGivenname = arr[1];
@@ -58,20 +63,11 @@ public class GradingSystem {
 					student.setSurname(studentSurname);
 					student.setGivenname(studentGivenname);
 					student.setId(studentId);
-
 					student.setScore(score);
-
-					String grade = gradingSystem.calculateGrade(score);
-					student.setGrade(grade);
-
-					System.out.println("Student Surname: " + studentSurname);
-					System.out.println("Student Givenname: " + studentGivenname);
-					System.out.println("Student ID: " + studentId);
-					System.out.println("Score: " + score);
-					System.out.println("Grade: " + grade);
-
+					student.setGrade(calculateGrade(score));
 				}
 
+				course.getStudents().add(student);
 				lineCounter = lineCounter + 1;
 			}
 
@@ -80,6 +76,8 @@ public class GradingSystem {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+
+		return course;
 
 	}
 

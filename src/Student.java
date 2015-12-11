@@ -1,11 +1,20 @@
+import java.util.LinkedList;
+
 public class Student {
+	private String id;
 	private String surname;
 	private String givenname;
-	private String id;
-	private float score;
-	private String grade;
-	private int credit;
 	private float gpa;
+	private String grade;
+	private float score;
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
 
 	public String getSurname() {
 		return surname;
@@ -23,20 +32,12 @@ public class Student {
 		this.givenname = givenname;
 	}
 
-	public String getId() {
-		return id;
+	public float getGpa() {
+		return gpa;
 	}
 
-	public void setId(String id) {
-		this.id = id;
-	}
-
-	public float getScore() {
-		return score;
-	}
-
-	public void setScore(float score) {
-		this.score = score;
+	public void setGpa(float gpa) {
+		this.gpa = gpa;
 	}
 
 	public String getGrade() {
@@ -47,20 +48,12 @@ public class Student {
 		this.grade = grade;
 	}
 
-	public int getCredit() {
-		return credit;
+	public float getScore() {
+		return score;
 	}
 
-	public void setCredit(int credit) {
-		this.credit = credit;
-	}
-
-	public float getGpa() {
-		return gpa;
-	}
-
-	public void setGpa(float gpa) {
-		this.gpa = gpa;
+	public void setScore(float score) {
+		this.score = score;
 	}
 
 }
