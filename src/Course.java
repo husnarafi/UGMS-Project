@@ -1,13 +1,16 @@
 import java.util.LinkedList;
+import java.util.List;
 
 public class Course {
 	private String courseCode;
 	private int courseCredit;
 	private int numberOfStudents;
 	LinkedList<Student> students = new LinkedList<>();
-
+	
+	List<Student> list;
+	
 	public String getCourseCode() {
-		return courseCode;
+		return courseCode;	
 	}
 
 	public void setCourseCode(String courseCode) {

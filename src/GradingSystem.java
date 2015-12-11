@@ -2,10 +2,14 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class GradingSystem {
 
-	private static final String FILEPATH = "./Course1.txt";
+	private static final String FILEPATH_1 = "./Course1.txt";
+	private static final String FILEPATH_2 = "./Course2.txt";
+	private static final String FILEPATH_3 = "./Course3.txt";
 
 	public static void main(String[] args) {
 		GradingSystem gradingSystem = new GradingSystem();
@@ -20,7 +24,16 @@ public class GradingSystem {
 		 * :Zhen,Ben,1109853Z-I011-1234,43.46
 		 */
 
-		Course course = gradingSystem.readCourseFile(FILEPATH);
+		Course course1 = gradingSystem.readCourseFile(FILEPATH_1);
+		Course course2 = gradingSystem.readCourseFile(FILEPATH_2);
+		Course course3 = gradingSystem.readCourseFile(FILEPATH_3);
+
+		List<Course> courses = new ArrayList<>();
+		courses.add(course1);
+		courses.add(course2);
+		courses.add(course3);
+		
+		for ()
 
 	}
 
