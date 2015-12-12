@@ -16,7 +16,7 @@ import java.io.IOException;
 
 public class GradingSystem {
 
-	// filepath constant
+	// file-path constant
 	private static final String FILEPATH1 = "./Course1.txt";
 	private static final String FILEPATH2 = "./Course2.txt";
 	private static final String FILEPATH3 = "./Course3.txt";
@@ -25,29 +25,41 @@ public class GradingSystem {
 
 		GradingSystem gradingSystem = new GradingSystem();
 
+		Bag<Student> studentBag = new Bag<Student>();
+
+		gradingSystem.getStudentBagFromFile(studentBag, FILEPATH1);
+		gradingSystem.getStudentBagFromFile(studentBag, FILEPATH2);
+		gradingSystem.getStudentBagFromFile(studentBag, FILEPATH3);
+
+		System.out.println("No. of Students : " + studentBag.size());
+
+		for (Student student : studentBag) {
+			for (Course course : student.getCourses()) {
+				System.out.println("Course code : " + course.getCourseCode());
+			}
+			System.out.println("ID : " + student.getId());
+			System.out.println("No. of courses " + student.getCourses().size());
+		}
+
 		// Read records from file(s)
 		// store these records in data structure (objects -> datastructure)
 		// apply sorting in data structure
-		/*
-		 * 1: MA113,4 2: 5 3: Ho,Ivan,1109853A-I011-0018,95.12 4 :Leong,Wai
-		 * Kit,1109853A-I011-0567,49.62 5 :Hua,Peng,1109853M-I011-0232,75.24 6
-		 * :Zhu,Danyang,1109853U-I011-0002,85.0 7
-		 * :Zhen,Ben,1109853Z-I011-1234,43.46
-		 */
 
 		// Bag bag = new Bag();
-		Bag<Student> studentBag = new Bag<Student>();
+
+	}
+
+	private void getStudentBagFromFile(Bag<Student> studentBag, String filePath) {
 
 		// buffer reader code for reading source file
-		try (BufferedReader br = new BufferedReader(new FileReader(FILEPATH1))) {
+		try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
 
 			int lineCounter = 1;
 
-			Student student = new Student();
+			Student student;
 			Course course = new Course();
 
 			for (String line; (line = br.readLine()) != null;) {
-				System.out.println(lineCounter + ":" + line);
 
 				// line one contains course-code and credit
 				if (lineCounter == 1) {
@@ -65,8 +77,6 @@ public class GradingSystem {
 					course.setCourseCode(courseCode);
 					course.setCourseCredit(courseCredit);
 
-					System.out.println("Course code : " + courseCode);
-					System.out.println("Course credit : " + courseCredit);
 				}
 
 				// line 2 contains numberOfStudents
@@ -78,11 +88,10 @@ public class GradingSystem {
 					// setting the numberOfStudents file.java
 					course.setNumberOfStudents(numberOfStudents);
 
-					System.out.println("Number of Students :"
-							+ numberOfStudents);
 				}
 
 				if (lineCounter > 2) {
+					student = new Student();
 
 					String[] arr = line.split(",");
 					String studentSurname = arr[0];
@@ -100,25 +109,30 @@ public class GradingSystem {
 					course.setScore(score);
 
 					// reading the calculateGrade function
-					String grade = gradingSystem.calculateGrade(score);
-					float points = gradingSystem.calculatePoints(score);
+					String grade = calculateGrade(score);
+					float points = calculatePoints(score);
 
 					// recalling calculateGrade function
 					// setting the grade function
 					course.setGrade(grade);
 					course.setPoints(points);
 
-					// print the objects in the following format
-					System.out.println("Student Surname: " + studentSurname);
-					System.out.println("Student Givenname: " + studentGivenname);
-					System.out.println("Student ID: " + studentId);
-					System.out.println("Score: " + score);
-					System.out.println("Grade: " + grade);
+					// student ?
+					// check if student already exists in the bag ? if yes ->
+					// add the new course
+					// if no -> add the student to bag
+
+					Student studentInBag = contains(studentBag, student);
+					if (studentInBag != null) {
+						
+						studentInBag.getCourses().add(course);
+						// update the course info only
+					} else {
+						student.getCourses().add(course);
+						studentBag.add(student);
+					}
 
 				}
-
-				student.getCourses().add(course);
-				studentBag.add(student);
 
 				// read the file line by line
 				lineCounter = lineCounter + 1;
@@ -130,10 +144,26 @@ public class GradingSystem {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-
 	}
 
-	private Bag<Student> getStudentBagFromFile(String filePath) {
+	/**
+	 * Checks the given student id with the bag student id
+	 * @param studentBag
+	 * @param student
+	 * @return return the matched student from the bag
+	 */
+	private Student contains(Bag<Student> studentBag, Student student) {
+
+		// iterate through all element of the bag
+		// check the given student id with bag student id's
+		// if the given id matches with bag id --> return the student
+		// else return null
+
+		for (Student std : studentBag) {
+			if (std.getId().equals(student.getId())) {
+				return std;
+			}
+		}
 
 		return null;
 	}
