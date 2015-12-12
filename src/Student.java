@@ -4,6 +4,7 @@ public class Student {
 	String id;
 	float score;
 	String grade;
+	float points;
 	int credit;
 	float gpa;
 
@@ -42,9 +43,18 @@ public class Student {
 	public String getGrade() {
 		return grade;
 	}
-
+	
 	public void setGrade(String grade) {
 		this.grade = grade;
+	
+	}
+	
+	public float getPoints(){
+		return points;
+	}
+	
+	public void setPoints(float points){
+		this.points = points;
 	}
 
 	public int getCredit() {
