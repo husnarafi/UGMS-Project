@@ -119,9 +119,15 @@ public class GradingSystemMenu {
 				break;
 				
 			case 3:
+				Student[] stdArray = convertBagToArray(studentBag);
+				Merge.sort(stdArray);
 				
-				Comparable<Student>[] a = new Comparable[5];
-				Merge.sort(a);
+				System.out.println("Student ID\t\tStudent Name\t\tGPA");
+				System.out.println("----------------\t--------------\t--------------");
+				
+				for (int i = 0; i < stdArray.length; i++) {
+					System.out.println(stdArray[i].getId() + "\t" + stdArray[i].getSurname() + "," + stdArray[i].getGivenname() +"\t"+ stdArray[i].getGpa());
+				}
 				
 				break;
 			case 4:
@@ -135,6 +141,55 @@ public class GradingSystemMenu {
 			case 8:
 				break;
 			case 9:
+				
+				//Get course code from user
+				//initialize num and denometor
+				// check this course code in loop
+				// count total score in nume 
+				// count total values in denominator
+				
+				
+				// student have courses..getstudentCourses
+				// for each course, average, highest and lowest
+				//iterate loop
+				System.out.println("Course Code:" );
+				System.out.println("Course Credit: ");
+				
+				String courseCode = scanner.next();
+				String courseCredit = scanner.next();
+				
+				
+				float average = 0;
+				float average1= 0;
+				float average2 =0;
+				float average3 = 0;
+				
+				
+				for (Student std3 : studentBag){
+					for (Course course: std3.getCourses()){
+						
+						if (course.getCourseCode().equals("MA113")){
+							//average=course.getScore() +average;
+							
+							System.out.println("Course Code: " + courseCode);
+							System.out.println("Credit: " + courseCredit);
+							
+						}
+						
+						if (course.getCourseCode().equals("MA114")){
+							average =course.getScore() +average;
+						
+						}
+						
+						if (course.getCourseCode().equals("MA115")){
+							average = course.getScore() + average;
+						}
+					}
+					
+					
+					
+				}
+				
 				break;
 
 			default:
@@ -148,16 +203,17 @@ public class GradingSystemMenu {
 
 	}
 	
-	private Comparable<Student>[] convertBagToComparableArray(Bag<Student> studentBag) {
-		Comparable<Student>[] students= new Comparable[studentBag.size()];
-		
-		int counter = 0;
-		Iterator<Student> iterator = studentBag.iterator();
-		while(studentBag.iterator().hasNext()) {
-			students[counter] = (Comparable<Student>) iterator.next();
-		}
-		
-		return null;
-	}
+	
+	private static Student[] convertBagToArray(Bag<Student> studentBag) {
+		int length = studentBag.size();
+		Student[] students = new Student[length];
 
+		int counter = 0;
+		for (Student std : studentBag) {
+			students[counter] = std;
+			counter = counter + 1;
+		}
+
+		return students;
+	}
 }

@@ -1,4 +1,4 @@
-public class Student {
+public class Student implements Comparable<Student>{
 	private String surname;
 	private String givenname;
 	private String id;
@@ -43,6 +43,14 @@ public class Student {
 
 	public void setGpa(float gpa) {
 		this.gpa = gpa;
+	}
+	@Override
+	public int compareTo(Student student) {
+		
+		if (this.gpa == student.getGpa())
+			return 0;
+		else
+			return this.gpa > student.getGpa() ? 1 : -1;
 	}
 
 }
