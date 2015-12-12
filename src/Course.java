@@ -1,8 +1,11 @@
-
 public class Course {
-	String courseCode;
-	int courseCredit;
-	int numberOfStudents;
+	private String courseCode;
+	private int courseCredit;
+	private int numberOfStudents;
+	private float score;
+	private String grade;
+	private float points;
+	private int credit;
 
 	public String getCourseCode() {
 		return courseCode;
@@ -27,8 +30,37 @@ public class Course {
 	public void setNumberOfStudents(int numberOfStudents) {
 		this.numberOfStudents = numberOfStudents;
 	}
-	
-	
-	
-	
+
+	public float getScore() {
+		return score;
+	}
+
+	public void setScore(float score) {
+		this.score = score;
+	}
+
+	public String getGrade() {
+		return grade;
+	}
+
+	public void setGrade(String grade) {
+		this.grade = grade;
+	}
+
+	public float getPoints() {
+		return points;
+	}
+
+	public void setPoints(float points) {
+		this.points = points;
+	}
+
+	public int getCredit() {
+		return credit;
+	}
+
+	public void setCredit(int credit) {
+		this.credit = credit;
+	}
+
 }

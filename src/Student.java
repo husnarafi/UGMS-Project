@@ -1,12 +1,17 @@
 public class Student {
-	String surname;
-	String givenname;
-	String id;
-	float score;
-	String grade;
-	float points;
-	int credit;
-	float gpa;
+	private String surname;
+	private String givenname;
+	private String id;
+	private float gpa;
+	private Bag<Course> courses = new Bag<Course>();
+
+	public Bag<Course> getCourses() {
+		return courses;
+	}
+
+	public void setCourses(Bag<Course> courses) {
+		this.courses = courses;
+	}
 
 	public String getSurname() {
 		return surname;
@@ -30,39 +35,6 @@ public class Student {
 
 	public void setId(String id) {
 		this.id = id;
-	}
-
-	public float getScore() {
-		return score;
-	}
-
-	public void setScore(float score) {
-		this.score = score;
-	}
-
-	public String getGrade() {
-		return grade;
-	}
-	
-	public void setGrade(String grade) {
-		this.grade = grade;
-	
-	}
-	
-	public float getPoints(){
-		return points;
-	}
-	
-	public void setPoints(float points){
-		this.points = points;
-	}
-
-	public int getCredit() {
-		return credit;
-	}
-
-	public void setCredit(int credit) {
-		this.credit = credit;
 	}
 
 	public float getGpa() {
