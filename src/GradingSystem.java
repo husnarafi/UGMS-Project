@@ -1,14 +1,3 @@
-/********************************************
- * Assignment 1
- * Name: Rafi Husna
- * Student ID: 1409853O-I011-0011
- * Course and Section: Data Structures, LP002
- * email: husnarafi94@gmail.com
- * 
- * Description: This program reads the file correctly and stores the student information according to the file.
- 
- ********************************************/
-
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -16,40 +5,7 @@ import java.io.IOException;
 
 public class GradingSystem {
 
-	// file-path constant
-	private static final String FILEPATH1 = "./Course1.txt";
-	private static final String FILEPATH2 = "./Course2.txt";
-	private static final String FILEPATH3 = "./Course3.txt";
-
-	public static void main(String[] args) {
-
-		GradingSystem gradingSystem = new GradingSystem();
-
-		Bag<Student> studentBag = new Bag<Student>();
-
-		gradingSystem.getStudentBagFromFile(studentBag, FILEPATH1);
-		gradingSystem.getStudentBagFromFile(studentBag, FILEPATH2);
-		gradingSystem.getStudentBagFromFile(studentBag, FILEPATH3);
-
-		System.out.println("No. of Students : " + studentBag.size());
-
-		for (Student student : studentBag) {
-			for (Course course : student.getCourses()) {
-				System.out.println("Course code : " + course.getCourseCode());
-			}
-			System.out.println("ID : " + student.getId());
-			System.out.println("No. of courses " + student.getCourses().size());
-		}
-
-		// Read records from file(s)
-		// store these records in data structure (objects -> datastructure)
-		// apply sorting in data structure
-
-		// Bag bag = new Bag();
-
-	}
-
-	private void getStudentBagFromFile(Bag<Student> studentBag, String filePath) {
+	public void getStudentBagFromFile(Bag<Student> studentBag, String filePath) {
 
 		// buffer reader code for reading source file
 		try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
@@ -124,7 +80,7 @@ public class GradingSystem {
 
 					Student studentInBag = contains(studentBag, student);
 					if (studentInBag != null) {
-						
+
 						studentInBag.getCourses().add(course);
 						// update the course info only
 					} else {
@@ -148,6 +104,7 @@ public class GradingSystem {
 
 	/**
 	 * Checks the given student id with the bag student id
+	 * 
 	 * @param studentBag
 	 * @param student
 	 * @return return the matched student from the bag
@@ -258,4 +215,49 @@ public class GradingSystem {
 
 	}
 
+	public void preProcessingOnFiles(Bag<Student> studentBag) {
+		// iterate the loop
+		// search and read student id
+		// then check the number of courses enrolled
+		// check the grade and score of student
+		// then use the gpa formula to calculate gpa of student
+		// store the value of calculated gpa of student
+		// print the gpa on screen
+
+		for (Student student : studentBag) {
+			float gpa = calculateGpa(student.getCourses());
+			student.setGpa(gpa);
+		}
+	}
+
+	private float calculateGpa(Bag<Course> courses) {
+		// list of courses
+		// list of credit hours
+		// list of points
+		// apply formula
+		
+		// gpa = numentor/denominator
+		
+		//for(int courseCredit; courseCredit)
+		
+	
+		float numerator1 = 0;
+		int totalCourseCredits = 0;
+		
+		// 2 × 3 +2 × 4 + 2 × 3
+		
+		for (Course course : courses){
+			int credit = course.getCredit();
+
+			float numerator = course.getPoints() * course.getCredit();
+			numerator1 = numerator + numerator1;
+			
+			totalCourseCredits = course.getCredit()  + totalCourseCredits;			
+		}
+		
+		float gpa = numerator1 / totalCourseCredits;
+		
+		return gpa;
+		
+	}
 }
