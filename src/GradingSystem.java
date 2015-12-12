@@ -2,9 +2,8 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
+
+import edu.princeton.cs.algs4.Bag;
 
 public class GradingSystem {
 
@@ -28,30 +27,20 @@ public class GradingSystem {
 		Course course1 = gradingSystem.readCourseFile(FILEPATH_1);
 		Course course2 = gradingSystem.readCourseFile(FILEPATH_2);
 		Course course3 = gradingSystem.readCourseFile(FILEPATH_3);
-
-		List<Course> courses = new ArrayList<>();
-		courses.add(course1);
-		courses.add(course2);
-		courses.add(course3);
-
-		LinkedList<StudentRecord> studentRecords = new LinkedList<StudentRecord>();
 		
-		for (Course course : courses) {
-			
-			for (Student student : course.getStudents()) {
-				// check if student is already added
-				// if yes.. then add course information for this student
-				// if no then add the student
-				
-			}
+		Bag<Student> bag = new Bag<Student>();
+		
+		bag.add(new Student());
+		bag.add(new Student());
+		bag.add(new Student());
+		bag.add(new Student());
+		
+		for (Student student : bag) {
 			
 		}
 
-	}
-	
-	private Student contains(LinkedList<StudentRecord> students, Student student) {
-		
-		return null;
+
+
 	}
 
 	private Course readCourseFile(String filePath) {
