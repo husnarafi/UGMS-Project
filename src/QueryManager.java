@@ -15,4 +15,22 @@ public class QueryManager {
 		
 		return -1;
 	}
+	public Student findStudentByStudentId(String studentId, Bag<Student> studentBag){
+		//we have course code, grade and gpa in our studentbag
+		// recalling student function 
+		// iterate loop
+		//check the student id in std bag
+		// if yes, then coursecode, grade and gpa
+		for (Student std : studentBag){
+			if (studentId.equals(std.getId())){
+				return std;
+			
+			}
+		
+		}
+		return null;
+	}
+
 }
+
+

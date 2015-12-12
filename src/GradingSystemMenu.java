@@ -76,18 +76,19 @@ public class GradingSystemMenu {
 			String input = scanner.next();
 			int itemCode = Integer.parseInt(input);
 
+			QueryManager querymanager = new QueryManager();
+
 			switch (itemCode) {
 			case 1:
 				System.out.print("Enter the Student ID: ");
-				String studentId = scanner.next();
+				String studentIdForGpa = scanner.next();
 
 				// student id
 				// stnd bag
 
 				// for given std id fidn the gpa
 
-				QueryManager querymanager = new QueryManager();
-				float gpa = querymanager.findGpaByStudentId(studentId,
+				float gpa = querymanager.findGpaByStudentId(studentIdForGpa,
 						studentBag);
 				if (gpa == -1) {
 					System.out.print("No such student exists:");
@@ -97,8 +98,32 @@ public class GradingSystemMenu {
 
 				break;
 			case 2:
+				System.out.print("Please input the student ID:");
+				String stdIdForGrade = scanner.next();
+				
+					Student student = querymanager.findStudentByStudentId(stdIdForGrade, studentBag);
+					if (student == null){
+						System.out.print("No such student exists:");
+
+					}else {
+						//get courses from student
+						for (Course course : student.getCourses()){
+							System.out.println("Course Code : " + course.getCourseCode() + " Course Grade : " + course.getGrade());
+						}
+						System.out.println("GPA : " + student.getGpa());
+					}
+					
 				break;
+				
 			case 3:
+				Merge.sort(new Comparable<Float>() {
+
+					@Override
+					public int compareTo(Float o) {
+						// TODO Auto-generated method stub
+						return 0;
+					}
+				});
 				break;
 			case 4:
 				break;
