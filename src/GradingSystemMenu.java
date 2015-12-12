@@ -1,3 +1,6 @@
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.Iterator;
 import java.util.Scanner;
 
 /********************************************
@@ -116,14 +119,10 @@ public class GradingSystemMenu {
 				break;
 				
 			case 3:
-				Merge.sort(new Comparable<Float>() {
-
-					@Override
-					public int compareTo(Float o) {
-						// TODO Auto-generated method stub
-						return 0;
-					}
-				});
+				
+				Comparable<Student>[] a = new Comparable[5];
+				Merge.sort(a);
+				
 				break;
 			case 4:
 				break;
@@ -147,6 +146,18 @@ public class GradingSystemMenu {
 			e.printStackTrace(System.err);
 		}
 
+	}
+	
+	private Comparable<Student>[] convertBagToComparableArray(Bag<Student> studentBag) {
+		Comparable<Student>[] students= new Comparable[studentBag.size()];
+		
+		int counter = 0;
+		Iterator<Student> iterator = studentBag.iterator();
+		while(studentBag.iterator().hasNext()) {
+			students[counter] = (Comparable<Student>) iterator.next();
+		}
+		
+		return null;
 	}
 
 }
