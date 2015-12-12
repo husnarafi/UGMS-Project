@@ -5,7 +5,7 @@ public class Course {
 	private float score;
 	private String grade;
 	private float points;
-	private int credit;
+
 
 	public String getCourseCode() {
 		return courseCode;
@@ -55,12 +55,6 @@ public class Course {
 		this.points = points;
 	}
 
-	public int getCredit() {
-		return credit;
-	}
 
-	public void setCredit(int credit) {
-		this.credit = credit;
-	}
 
 }

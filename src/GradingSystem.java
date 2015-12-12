@@ -13,8 +13,11 @@ public class GradingSystem {
 			int lineCounter = 1;
 
 			Student student;
-			Course course = new Course();
-
+			Course course;
+			int courseCredit = -1;
+			String courseCode= null;
+			int numberOfStudents = -1;
+			
 			for (String line; (line = br.readLine()) != null;) {
 
 				// line one contains course-code and credit
@@ -24,14 +27,13 @@ public class GradingSystem {
 					String[] arr = line.split(",");
 
 					// array 2
-					String courseCode = arr[0];
+					courseCode = arr[0];
 
 					// conversion from String to Integer
-					int courseCredit = Integer.parseInt(arr[1]);
+					courseCredit = Integer.parseInt(arr[1]);
 
 					// setting the course file.java
-					course.setCourseCode(courseCode);
-					course.setCourseCredit(courseCredit);
+					
 
 				}
 
@@ -39,15 +41,19 @@ public class GradingSystem {
 				if (lineCounter == 2) {
 
 					// conversion from String to Integer
-					int numberOfStudents = Integer.parseInt(line);
+					numberOfStudents = Integer.parseInt(line);
 
 					// setting the numberOfStudents file.java
-					course.setNumberOfStudents(numberOfStudents);
 
 				}
 
 				if (lineCounter > 2) {
 					student = new Student();
+					course = new Course();
+					
+					course.setCourseCode(courseCode);
+					course.setCourseCredit(courseCredit);
+					course.setNumberOfStudents(numberOfStudents);
 
 					String[] arr = line.split(",");
 					String studentSurname = arr[0];
@@ -247,16 +253,15 @@ public class GradingSystem {
 		// 2 × 3 +2 × 4 + 2 × 3
 		
 		for (Course course : courses){
-			int credit = course.getCredit();
 
-			float numerator = course.getPoints() * course.getCredit();
+			float numerator = course.getPoints() * course.getCourseCredit();
 			numerator1 = numerator + numerator1;
 			
-			totalCourseCredits = course.getCredit()  + totalCourseCredits;			
+			totalCourseCredits = course.getCourseCredit()  + totalCourseCredits;			
 		}
 		
 		float gpa = numerator1 / totalCourseCredits;
-		
+		System.out.println(gpa);
 		return gpa;
 		
 	}

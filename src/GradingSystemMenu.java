@@ -36,7 +36,7 @@ public class GradingSystemMenu {
 			System.out.println("ID : " + student.getId());
 			System.out.println("No. of courses " + student.getCourses().size());
 		}
-		
+
 		// update GPA of all the students based on their courses
 		gradingSystem.preProcessingOnFiles(studentBag);
 
@@ -80,14 +80,21 @@ public class GradingSystemMenu {
 			case 1:
 				System.out.print("Enter the Student ID: ");
 				String studentId = scanner.next();
-				
+
 				// student id
 				// stnd bag
-				
-//				for given std id fidn the gpa
-				
-				float gpa = findGpaByStudentId(studentId, studentBag);
-				
+
+				// for given std id fidn the gpa
+
+				QueryManager querymanager = new QueryManager();
+				float gpa = querymanager.findGpaByStudentId(studentId,
+						studentBag);
+				if (gpa == -1) {
+					System.out.print("No such student exists:");
+				} else {
+					System.out.print("GPA : " + gpa);
+				}
+
 				break;
 			case 2:
 				break;
@@ -114,7 +121,7 @@ public class GradingSystemMenu {
 		} catch (Exception e) {
 			e.printStackTrace(System.err);
 		}
-	
+
 	}
 
 }
