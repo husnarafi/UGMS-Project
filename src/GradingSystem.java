@@ -3,6 +3,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 public class GradingSystem {
@@ -32,9 +33,25 @@ public class GradingSystem {
 		courses.add(course1);
 		courses.add(course2);
 		courses.add(course3);
-		
-		for ()
 
+		LinkedList<StudentRecord> studentRecords = new LinkedList<StudentRecord>();
+		
+		for (Course course : courses) {
+			
+			for (Student student : course.getStudents()) {
+				// check if student is already added
+				// if yes.. then add course information for this student
+				// if no then add the student
+				
+			}
+			
+		}
+
+	}
+	
+	private Student contains(LinkedList<StudentRecord> students, Student student) {
+		
+		return null;
 	}
 
 	private Course readCourseFile(String filePath) {

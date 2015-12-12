@@ -5,9 +5,7 @@ public class Course {
 	private String courseCode;
 	private int courseCredit;
 	private int numberOfStudents;
-	LinkedList<Student> students = new LinkedList<>();
-	
-	List<Student> list;
+	private LinkedList<Student> students = new LinkedList<>();
 	
 	public String getCourseCode() {
 		return courseCode;	
