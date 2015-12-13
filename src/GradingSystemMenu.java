@@ -1,3 +1,4 @@
+import java.io.IOException;
 import java.util.Scanner;
 
 /********************************************
@@ -23,18 +24,32 @@ public class GradingSystemMenu {
 
 		Bag<Student> studentBag = new Bag<Student>();
 
-		gradingSystem.getStudentBagFromFile(studentBag, FILEPATH1);
-		gradingSystem.getStudentBagFromFile(studentBag, FILEPATH2);
-		gradingSystem.getStudentBagFromFile(studentBag, FILEPATH3);
+		Scanner scan = new Scanner(System.in);
+		while (true) {
+			System.out.print("Please enter the database filename:");
+			String filePath = scan.next();
 
-		for (Student student : studentBag) {
-			for (Course course : student.getCourses()) {
-				System.out.println("Course code : " + course.getCourseCode());
+			try {
+				gradingSystem.getStudentBagFromFile(studentBag, filePath);
+			} catch (NumberFormatException e) {
+				System.out.println("Invalid file : " + e.getLocalizedMessage());
+			} catch (IOException e) {
+				System.out.println("Invalid file : " + e.getLocalizedMessage());
 			}
-			System.out.println("ID : " + student.getId());
+
+			System.out.print("Do you have another score report? Press \"Y\" for Yes and \"N\" for No.: ");
+			String answer = scan.next();
+			if (answer.equalsIgnoreCase("N")) {
+				break;
+			}
 		}
 
-		// update GPA of all the students based on their courses
+		// FOR TESTING ONLY
+		// gradingSystem.getStudentBagFromFile(studentBag, FILEPATH1);
+		// gradingSystem.getStudentBagFromFile(studentBag, FILEPATH2);
+		// gradingSystem.getStudentBagFromFile(studentBag, FILEPATH3);
+
+		// update gpa of all the students based on their courses
 		gradingSystem.preProcessingOnFiles(studentBag);
 		Student[] stdArray = convertBagToArray(studentBag);
 
@@ -289,7 +304,8 @@ public class GradingSystemMenu {
 				float lowest = 0;
 				int sum = 0;
 				boolean firstTime = true;
-				int aPlus = 0, a = 0, aMinus = 0, bPlus = 0, b = 0, bMinus = 0, cPlus = 0, c = 0, cMinus = 0, d = 0, f = 0;
+				int aPlus = 0, a = 0, aMinus = 0, bPlus = 0, b = 0, bMinus = 0, cPlus = 0, c = 0, cMinus = 0, d = 0,
+						f = 0;
 				Bag<Student> courseStdForStat = querymanager.findStudentsByCourse(courseCodeForStatisticsReport,
 						studentBag);
 				for (Student std : courseStdForStat) {
@@ -342,7 +358,7 @@ public class GradingSystemMenu {
 				System.out.println("The average score: " + average);
 				System.out.println("The highest score: " + highest);
 				System.out.println("The lowest score: " + lowest);
-				
+
 				System.out.println("Course Grade Statistics:");
 				System.out.println("A+ : " + aPlus);
 				System.out.println("A : " + a);

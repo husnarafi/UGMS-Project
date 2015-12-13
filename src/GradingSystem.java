@@ -5,7 +5,8 @@ import java.io.IOException;
 
 public class GradingSystem {
 
-	public void getStudentBagFromFile(Bag<Student> studentBag, String filePath) {
+	public void getStudentBagFromFile(Bag<Student> studentBag, String filePath)
+			throws NumberFormatException, IOException {
 
 		// buffer reader code for reading source file
 		try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
@@ -15,9 +16,9 @@ public class GradingSystem {
 			Student student;
 			Course course;
 			int courseCredit = -1;
-			String courseCode= null;
+			String courseCode = null;
 			int numberOfStudents = -1;
-			
+
 			for (String line; (line = br.readLine()) != null;) {
 
 				// line one contains course-code and credit
@@ -33,7 +34,6 @@ public class GradingSystem {
 					courseCredit = Integer.parseInt(arr[1]);
 
 					// setting the course file.java
-					
 
 				}
 
@@ -50,7 +50,7 @@ public class GradingSystem {
 				if (lineCounter > 2) {
 					student = new Student();
 					course = new Course();
-					
+
 					course.setCourseCode(courseCode);
 					course.setCourseCredit(courseCredit);
 					course.setNumberOfStudents(numberOfStudents);
@@ -101,10 +101,6 @@ public class GradingSystem {
 			}
 
 			// if file not found, system will give following error
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
 		}
 	}
 
@@ -241,28 +237,27 @@ public class GradingSystem {
 		// list of credit hours
 		// list of points
 		// apply formula
-		
+
 		// gpa = numentor/denominator
-		
-		//for(int courseCredit; courseCredit)
-		
-	
+
+		// for(int courseCredit; courseCredit)
+
 		float numerator1 = 0;
 		int totalCourseCredits = 0;
-		
+
 		// 2 × 3 +2 × 4 + 2 × 3
-		
-		for (Course course : courses){
+
+		for (Course course : courses) {
 
 			float numerator = course.getPoints() * course.getCourseCredit();
 			numerator1 = numerator + numerator1;
-			
-			totalCourseCredits = course.getCourseCredit()  + totalCourseCredits;			
+
+			totalCourseCredits = course.getCourseCredit() + totalCourseCredits;
 		}
-		
+
 		float gpa = numerator1 / totalCourseCredits;
 		System.out.println(gpa);
 		return gpa;
-		
+
 	}
 }
