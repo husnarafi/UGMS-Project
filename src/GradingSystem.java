@@ -256,7 +256,7 @@ public class GradingSystem {
 		}
 
 		float gpa = numerator1 / totalCourseCredits;
-		System.out.println(gpa);
+		//System.out.println(gpa);
 		return gpa;
 
 	}
