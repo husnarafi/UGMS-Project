@@ -6,7 +6,6 @@ public class Course {
 	private String grade;
 	private float points;
 
-
 	public String getCourseCode() {
 		return courseCode;
 	}

@@ -58,9 +58,9 @@ public class Student implements Comparable<Student> {
 		} else if (SORT_TAG == QueryManager.SORT_BY_ID) {
 			sortById(student, SORT_ASCENDING);
 		} else if (SORT_TAG == QueryManager.SORT_BY_SCORE) {
-
+			sortByScore(student, SORT_ASCENDING);
 		} else if (SORT_TAG == QueryManager.SORT_BY_GRADE) {
-
+			sortByGrade(student, SORT_ASCENDING);
 		}
 
 		return 0;
@@ -99,6 +99,56 @@ public class Student implements Comparable<Student> {
 				return this.id.compareTo(student.id) > 0 ? 1 : -1;
 			} else {
 				return this.id.compareTo(student.id) < 0 ? -1 : 1;
+			}
+		}
+	}
+
+	private int sortByScore(Student student, boolean ascending) {
+		float leftScore = 0;
+		float rightScore = 0;
+
+		for (Course c1 : this.getCourses()) {
+			leftScore = c1.getScore();
+			break;
+		}
+
+		for (Course c2 : student.getCourses()) {
+			rightScore = c2.getScore();
+			break;
+		}
+
+		if (leftScore == rightScore) {
+			return 0;
+		} else {
+			if (ascending) {
+				return leftScore > rightScore ? 1 : -1;
+			} else {
+				return leftScore < rightScore ? 1 : -1;
+			}
+		}
+	}
+
+	private int sortByGrade(Student student, boolean ascending) {
+		String left = null;
+		String right = null;
+
+		for (Course c1 : this.getCourses()) {
+			left = c1.getGrade();
+			break;
+		}
+
+		for (Course c2 : student.getCourses()) {
+			right = c2.getGrade();
+			break;
+		}
+
+		if (left.equals(right)) {
+			return 0;
+		} else {
+			if (ascending) {
+				return left.compareTo(right) > 0 ? 1 : -1;
+			} else {
+				return left.compareTo(right) < 0 ? -1 : 1;
 			}
 		}
 	}

@@ -169,7 +169,6 @@ public class GradingSystemMenu {
 				Bag<Student> students = querymanager.findStudentsByCourse(courseCode, studentBag);
 				boolean onlyRunFirstTime = true;
 
-				System.out.println("\t");
 				for (Student std : students) {
 
 					float score = 0;
@@ -193,8 +192,14 @@ public class GradingSystemMenu {
 
 				break;
 			case 8:
+				System.out.print("Please choose the course code first:");
+				String courseCodeForSorting = scanner.next();
+				
 				System.out.println("(1) Surname; (2) ID; (3) Score; (4) Grade");
 				System.out.print("Please choose the sorting field: ");
+				
+				Bag<Student> studentsOfCourse = querymanager.findStudentsByCourse(courseCodeForSorting, studentBag);
+				Student[] courseStudents = convertBagToArray(studentsOfCourse);
 
 				int sortingField = scanner.nextInt();
 				String sortingOrder = null;
@@ -207,21 +212,31 @@ public class GradingSystemMenu {
 						switch (sortingField) {
 						case 1:
 							if (sortingOrder.equalsIgnoreCase("A")) {
-								querymanager.sortByTag(stdArray, QueryManager.SORT_BY_SURNAME, true);
+								querymanager.sortByTag(courseStudents, QueryManager.SORT_BY_SURNAME, true);
 							} else {
-								querymanager.sortByTag(stdArray, QueryManager.SORT_BY_SURNAME, false);
+								querymanager.sortByTag(courseStudents, QueryManager.SORT_BY_SURNAME, false);
 							}
 							break;
 						case 2:
 							if (sortingOrder.equalsIgnoreCase("A")) {
-								querymanager.sortByTag(stdArray, QueryManager.SORT_BY_ID, true);
+								querymanager.sortByTag(courseStudents, QueryManager.SORT_BY_ID, true);
 							} else {
-								querymanager.sortByTag(stdArray, QueryManager.SORT_BY_ID, false);
+								querymanager.sortByTag(courseStudents, QueryManager.SORT_BY_ID, false);
 							}
 							break;
 						case 3:
+							if (sortingOrder.equalsIgnoreCase("A")) {
+								querymanager.sortByTag(courseStudents, QueryManager.SORT_BY_SCORE, true);
+							} else {
+								querymanager.sortByTag(courseStudents, QueryManager.SORT_BY_SCORE, false);
+							}
 							break;
 						case 4:
+							if (sortingOrder.equalsIgnoreCase("A")) {
+								querymanager.sortByTag(courseStudents, QueryManager.SORT_BY_GRADE, true);
+							} else {
+								querymanager.sortByTag(courseStudents, QueryManager.SORT_BY_GRADE, false);
+							}
 							break;
 						}
 					} else {
@@ -231,8 +246,26 @@ public class GradingSystemMenu {
 					System.out.println("Invalid input");
 				}
 
-				for (Student std : stdArray) {
-					System.out.println(std.getSurname());
+				boolean fistTimeOnly = true;
+				for (Student std : courseStudents) {
+
+					float score = 0;
+					String grade = null;
+
+					for (Course course : std.getCourses()) {
+						if (fistTimeOnly) {
+							fistTimeOnly = false;
+							System.out.println("Course Code:" + course.getCourseCode());
+							System.out.println("Credit:" + course.getCourseCredit());
+							System.out.println("Number of Students:" + course.getNumberOfStudents());
+						}
+
+						score = course.getScore();
+						grade = course.getGrade();
+
+					}
+					System.out.println("Name\t" + std.getSurname() + "," + std.getGivenname() + "\tID\t" + std.getId()
+							+ "\tScore\t" + score + "\tGrade\t" + grade);
 				}
 
 				break;
