@@ -2,7 +2,20 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+/********************************************
+ * Assignment 1
+ * 
+ * Name: Rafi Husna 
+ * Student ID: 1409853O-I011-0011 
+ * Course and Section: DataStructures, LP002 
+ * email: husnarafi94@gmail.com
+ *
+ * Description: This file reads the source files and calculates the Gpa, 
+ * grade and points achieved by each student in a course 
+ * following the use of the provided grading scheme.
 
+
+ ********************************************/
 public class GradingSystem {
 
 	public void getStudentBagFromFile(Bag<Student> studentBag, String filePath)

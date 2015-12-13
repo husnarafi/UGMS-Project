@@ -1,0 +1,74 @@
+Your System Application:
+
+(a) Group Information : There are two students in this group.
+
+Student 1 Information:
+Name: Wu,Yajie
+ID: 1509853N-SA10-0015
+
+Student 2 Information: 
+Name: Rafi, Husna
+ID: 1409853O-I011-0011
+
+
+(b) File List: The program contains eight files. The names of files are below:
+
+FILE 1: GradingSystemMenu.java
+FILE 2: GradingSystem.java
+FILE3: QueryManager.java
+FILE4: Student.java
+FILE5: Course.java
+FILE6: Report.pdf
+FILE7: SystemApplication.txt
+FILE8: Class diagram.jpg
+
+
+(c) File Description: 
+
+FILE 1: GradingSystemMenu.java :
+This main file collects all the stored information from other files and display to the user as per user’s desired input.
+
+FILE 2: GradingSystem.java
+This file reads the source files and calculates the Gpa, grade and points achieved by each student in a course following the use of the provided grading scheme.
+
+FILE3: QueryManager.java
+This file contains multiple data structures for e.g. (finding student by surname, find Gpa by students ID) etc.
+
+FILE4: Student.java 
+This file stores the complete student information.
+
+FILE5: Course.java
+This file stores the complete course information.
+
+FILE6: Report.pdf
+This file contains the complete report of the program as a part of project.
+
+FILE7: SystemApplication.txt 
+This file contains the information of group students and the number of files used in the making of project.
+
+FILE8: Class diagram.jpg
+This file is a photo of class diagram as a part of report that shows the comprehensive design of each class.
+
+Files Compilation: 
+
+FILE 1 to 5 are made on eclipse platform hence the files are .java and they are compressed in the .zip file.
+
+FILE 6 is converted from .doc to .pdf format as per project requirement and is also compressed in the .zip file.
+
+FILE 7 and 8 are also compressed and compiled in the .zip file.
+
+Files Execution: 
+
+Files from 1 to 6 are executed as java files. File 7 is executed as pdf file. File 8 is executed as txt file and File 9 is executed as jpeg file.
+
+Bugs of System:
+There is only one bug in the program which is that the program does not sort the score and grade of students in descending. It only sorts and prints in ascending order.
+
+All the program is compiled in a .zip file and according to the testing client, the running time of program is less than 20 seconds.
+
+
+
+
+
+
+

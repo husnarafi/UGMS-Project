@@ -1,3 +1,14 @@
+/********************************************
+ * Assignment 1
+ * 
+ * Name: Rafi Husna 
+ * Student ID: 1409853O-I011-0011 
+ * Course and Section: DataStructures, LP002 
+ * email: husnarafi94@gmail.com
+ *
+ * Description: This file stores the complete student information.
+ ********************************************/
+
 public class Student implements Comparable<Student> {
 	public static int SORT_TAG = QueryManager.SORT_BY_GPA;
 	public static boolean SORT_ASCENDING = true;

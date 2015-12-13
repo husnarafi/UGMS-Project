@@ -1,3 +1,14 @@
+/********************************************
+ * Assignment 1
+ * 
+ * Name: Rafi Husna 
+ * Student ID: 1409853O-I011-0011 
+ * Course and Section: Data Structures, LP002 
+ * email: husnarafi94@gmail.com
+ *
+ * Description: This file stores the complete course information.
+ ********************************************/
+
 public class Course {
 	private String courseCode;
 	private int courseCredit;

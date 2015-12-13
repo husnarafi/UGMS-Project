@@ -4,11 +4,13 @@ import java.util.Scanner;
 /********************************************
  * Assignment 1
  * 
- * Name: Rafi Husna Student ID: 1409853O-I011-0011 Course and Section: Data
- * Structures, LP002 email: husnarafi94@gmail.com
+ * Name: Rafi Husna 
+ * Student ID: 1409853O-I011-0011 
+ * Course and Section: DataStructures, LP002 
+ * email: husnarafi94@gmail.com
  *
- * Description: This program reads the file correctly and stores the student
- * information according to the file.
+ * Description: This main file collects all the stored information 
+ * from other files and display to the user as per user’s desired input.
  ********************************************/
 
 public class GradingSystemMenu {

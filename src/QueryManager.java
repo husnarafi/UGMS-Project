@@ -1,3 +1,15 @@
+/********************************************
+ * Assignment 1
+ * 
+ * Name: Rafi Husna 
+ * Student ID: 1409853O-I011-0011 
+ * Course and Section: DataStructures, LP002 
+ * email: husnarafi94@gmail.com
+ *
+ * Description: This file contains multiple data structures 
+ * for e.g. (finding student by surname, find Gpa by students ID) etc.
+
+ ********************************************/
 public class QueryManager {
 
 	public static final int SORT_BY_GPA = 1;
