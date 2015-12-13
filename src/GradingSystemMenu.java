@@ -194,10 +194,10 @@ public class GradingSystemMenu {
 			case 8:
 				System.out.print("Please choose the course code first:");
 				String courseCodeForSorting = scanner.next();
-				
+
 				System.out.println("(1) Surname; (2) ID; (3) Score; (4) Grade");
 				System.out.print("Please choose the sorting field: ");
-				
+
 				Bag<Student> studentsOfCourse = querymanager.findStudentsByCourse(courseCodeForSorting, studentBag);
 				Student[] courseStudents = convertBagToArray(studentsOfCourse);
 
@@ -280,39 +280,45 @@ public class GradingSystemMenu {
 				// student have courses..getstudentCourses
 				// for each course, average, highest and lowest
 				// iterate loop
-				System.out.println("Course Code:");
-				System.out.println("Course Credit: ");
 
-				// String courseCode = scanner.next();
-				// String courseCredit = scanner.next();
+				System.out.print("Please choose the course code first:");
+				String courseCodeForStatisticsReport = scanner.next();
 
 				float average = 0;
-				float average1 = 0;
-				float average2 = 0;
-				float average3 = 0;
+				float highest = 0;
+				float lowest = 0;
+				int sum = 0;
+				boolean firstTime = true;
+				String[][] stats = new String[10][1];
+				Bag<Student> courseStdForStat = querymanager.findStudentsByCourse(courseCodeForStatisticsReport,
+						studentBag);
+				for (Student std : courseStdForStat) {
+					for (Course course : std.getCourses()) {
+						average = course.getScore() + average;
+						sum = sum + 1;
 
-				for (Student std3 : studentBag) {
-					for (Course course : std3.getCourses()) {
-
-						if (course.getCourseCode().equals("MA113")) {
-							// average=course.getScore() +average;
-
-							// System.out.println("Course Code: " + courseCode);
-							// System.out.println("Credit: " + courseCredit);
-
+						if (firstTime) {
+							firstTime = false;
+							highest = course.getScore();
+							lowest = course.getScore();
 						}
 
-						if (course.getCourseCode().equals("MA114")) {
-							average = course.getScore() + average;
-
+						if (course.getScore() > highest) {
+							highest = course.getScore();
 						}
 
-						if (course.getCourseCode().equals("MA115")) {
-							average = course.getScore() + average;
+						if (course.getScore() < lowest) {
+							lowest = course.getScore();
 						}
+
 					}
-
 				}
+				
+				average = average / sum;
+
+				System.out.println("The average score: " + average);
+				System.out.println("The highest score: " + highest);
+				System.out.println("The lowest score: " + lowest);
 
 				break;
 
