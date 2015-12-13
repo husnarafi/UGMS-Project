@@ -156,6 +156,21 @@ public class GradingSystemMenu {
 
 				break;
 			case 5:
+				System.out.print("Please input the Student Surname: ");
+				String startsWith = scanner.next();
+
+				Bag<Student> s = querymanager.findStudentsBySurnameStartsWith(startsWith, studentBag);
+
+				System.out.println(s.size() + " record(s) found in UGMS");
+				for (Student std : s) {
+					System.out.println(std.getGivenname() + " " + std.getSurname() + " " + std.getId() + " ");
+					for (Course course : std.getCourses()) {
+						System.out.println(course.getCourseCode() + " " + course.getGrade());
+
+					}
+					System.out.print("GPA:" + std.getGpa());
+				}
+
 				break;
 			case 6:
 				break;

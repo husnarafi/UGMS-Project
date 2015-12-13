@@ -48,6 +48,18 @@ public class QueryManager {
 		return students;
 	}
 
+	public Bag<Student> findStudentsBySurnameStartsWith(String startsWith, Bag<Student> studentBag) {
+		Bag<Student> students = new Bag<Student>();
+
+		for (Student std : studentBag) {
+			System.out.println(std.getSurname() + "---match---" + startsWith);
+			if (std.getSurname().startsWith(startsWith)) {
+				students.add(std);
+			}
+		}
+		return students;
+	}
+
 	public Bag<Student> findStudentsByCourse(String courseCode, Bag<Student> studentBag) {
 		Bag<Student> students = new Bag<Student>();
 
