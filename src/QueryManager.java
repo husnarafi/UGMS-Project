@@ -1,5 +1,11 @@
 public class QueryManager {
 
+	public static final int SORT_BY_GPA = 1;
+	public static final int SORT_BY_SURNAME = 2;
+	public static final int SORT_BY_ID = 3;
+	public static final int SORT_BY_SCORE = 4;
+	public static final int SORT_BY_GRADE = 5;
+
 	public float findGpaByStudentId(String studentId, Bag<Student> studentBag) {
 		// input function-> std id and std bag
 		// iterate through std bag
@@ -16,8 +22,7 @@ public class QueryManager {
 		return -1;
 	}
 
-	public Student findStudentByStudentId(String studentId,
-			Bag<Student> studentBag) {
+	public Student findStudentByStudentId(String studentId, Bag<Student> studentBag) {
 		// we have course code, grade and gpa in our studentbag
 		// recalling student function
 		// iterate loop
@@ -26,15 +31,12 @@ public class QueryManager {
 		for (Student std : studentBag) {
 			if (studentId.equals(std.getId())) {
 				return std;
-
 			}
-
 		}
 		return null;
 	}
 
-	public Bag<Student> findStudentsBySurname(String surname,
-			Bag<Student> studentBag) {
+	public Bag<Student> findStudentsBySurname(String surname, Bag<Student> studentBag) {
 		Bag<Student> students = new Bag<Student>();
 
 		for (Student std : studentBag) {
@@ -46,8 +48,7 @@ public class QueryManager {
 		return students;
 	}
 
-	public Bag<Student> findStudentsByCourse(String courseCode,
-			Bag<Student> studentBag) {
+	public Bag<Student> findStudentsByCourse(String courseCode, Bag<Student> studentBag) {
 		Bag<Student> students = new Bag<Student>();
 
 		for (Student std : studentBag) {
@@ -62,11 +63,15 @@ public class QueryManager {
 					c.add(course);
 					s.setCourses(c);
 					students.add(s);
-
 				}
-
 			}
 		}
 		return students;
+	}
+
+	public void sortByTag(Student[] arr, int sortTag, boolean value) {
+		Student.SORT_TAG = sortTag;
+		Student.SORT_ASCENDING = value;
+		Merge.sort(arr);
 	}
 }
