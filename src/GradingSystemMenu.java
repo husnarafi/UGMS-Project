@@ -173,6 +173,20 @@ public class GradingSystemMenu {
 
 				break;
 			case 6:
+				System.out.print("Please input the minimum gpa: ");
+				float minGpa = scanner.nextFloat();
+
+				Bag<Student> minGpaStd = querymanager.findStudentsByMinGpa(minGpa, studentBag);
+
+				System.out.println(minGpaStd.size() + " record(s) found in UGMS");
+				for (Student std : minGpaStd) {
+					System.out.println(std.getGivenname() + " " + std.getSurname() + " " + std.getId() + " ");
+					for (Course course : std.getCourses()) {
+						System.out.println(course.getCourseCode() + " " + course.getGrade());
+
+					}
+					System.out.print("GPA:" + std.getGpa());
+				}
 				break;
 			case 7:
 				// Please choose the course code first: LP002
