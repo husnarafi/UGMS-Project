@@ -57,21 +57,6 @@ public class GradingSystemMenu {
 
 		// print all the student records
 
-		// What do you want to do?
-		// 1. Find GPA of a student
-		// 2. Print grades of a student courses
-		// 3. Print sorted GPA's report
-		// 4. Print GPA, Grades with student surname
-		// 5. Print GPA, Grades with student surname by wild card
-		// 6. Student GPA's with Range sorted
-		// 7. Print score report by course code
-		// 8. print score report based on sorted field
-		// 9. Print statistical report
-
-		// Read records from file(s)
-		// store these records in data structure (objects -> datastructure)
-		// apply sorting in data structure
-
 		// Create a Scanner object
 		try (Scanner scanner = new Scanner(System.in)) {
 
@@ -94,11 +79,7 @@ public class GradingSystemMenu {
 			case 1:
 				System.out.print("Enter the Student ID: ");
 				String studentIdForGpa = scanner.next();
-
-				// student id
-				// stnd bag
-
-				// for given std id fidn the gpa
+				// find gpa by student id
 
 				float gpa = querymanager.findGpaByStudentId(studentIdForGpa, studentBag);
 				if (gpa == -1) {
@@ -112,6 +93,7 @@ public class GradingSystemMenu {
 				System.out.print("Please input the student ID:");
 				String stdIdForGrade = scanner.next();
 
+					// find student by student Id
 				Student student = querymanager.findStudentByStudentId(stdIdForGrade, studentBag);
 				if (student == null) {
 					System.out.print("No such student exists:");
@@ -126,13 +108,14 @@ public class GradingSystemMenu {
 				}
 
 				break;
-
+				
 			case 3:
 				querymanager.sortByTag(stdArray, QueryManager.SORT_BY_GPA, true);
 
 				System.out.println("Student ID\t\tStudent Name\t\tGPA");
 				System.out.println("----------------\t--------------\t--------------");
-
+				
+				//determining array length 
 				for (int i = 0; i < stdArray.length; i++) {
 					System.out.println(stdArray[i].getId() + "\t" + stdArray[i].getSurname() + ","
 							+ stdArray[i].getGivenname() + "\t" + stdArray[i].getGpa());
@@ -191,23 +174,7 @@ public class GradingSystemMenu {
 				}
 				break;
 			case 7:
-				// Please choose the course code first: LP002
-				// After the course code is chosen (input by the user), a sample
-				// report is shown below:
-				// Course Code: LP002
-				// Credit: 4
-				// Number of Students: 8
-				// Name ID Score Grade
-				// -------------------- ------------------ ----- -----
-				// 6
-				// Chan, Henry 1109853A-I011-0224 86 AChoi,
-				// Randy 1109853A-I011-0018 60 C
-				// Ip, John 1109853A-I011-0456 66 C+
-				// Lau, Mary 1109853U-I011-0002 75 B
-				// Lee, Vito 1109853J-I011-0116 85 ALeung,
-				// Terry 1109853P-I011-0955 80 B+
-				// Ngai, Raymond 1109853Z-I011-0066 89 A
-				// Tung, Tracy 1109853Q-I011-0016 51 D
+				
 				//
 				System.out.print("Please choose the course code first:");
 				String courseCode = scanner.next();
