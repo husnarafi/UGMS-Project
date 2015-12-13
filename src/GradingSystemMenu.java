@@ -289,7 +289,7 @@ public class GradingSystemMenu {
 				float lowest = 0;
 				int sum = 0;
 				boolean firstTime = true;
-				String[][] stats = new String[10][1];
+				int aPlus = 0, a = 0, aMinus = 0, bPlus = 0, b = 0, bMinus = 0, cPlus = 0, c = 0, cMinus = 0, d = 0, f = 0;
 				Bag<Student> courseStdForStat = querymanager.findStudentsByCourse(courseCodeForStatisticsReport,
 						studentBag);
 				for (Student std : courseStdForStat) {
@@ -311,15 +311,50 @@ public class GradingSystemMenu {
 							lowest = course.getScore();
 						}
 
+						if (course.getGrade().equals("A+")) {
+							aPlus = aPlus + 1;
+						} else if (course.getGrade().equals("A")) {
+							a = a + 1;
+						} else if (course.getGrade().equals("A-")) {
+							aMinus = aMinus + 1;
+						} else if (course.getGrade().equals("B+")) {
+							bPlus = bPlus + 1;
+						} else if (course.getGrade().equals("B")) {
+							b = b + 1;
+						} else if (course.getGrade().equals("B-")) {
+							bMinus = bMinus + 1;
+						} else if (course.getGrade().equals("C+")) {
+							cPlus = cPlus + 1;
+						} else if (course.getGrade().equals("C")) {
+							c = c + 1;
+						} else if (course.getGrade().equals("C-")) {
+							cMinus = cMinus + 1;
+						} else if (course.getGrade().equals("D")) {
+							d = d + 1;
+						} else if (course.getGrade().equals("F")) {
+							f = f + 1;
+						}
 					}
 				}
-				
+
 				average = average / sum;
 
 				System.out.println("The average score: " + average);
 				System.out.println("The highest score: " + highest);
 				System.out.println("The lowest score: " + lowest);
-
+				
+				System.out.println("Course Grade Statistics:");
+				System.out.println("A+ : " + aPlus);
+				System.out.println("A : " + a);
+				System.out.println("A- : " + aMinus);
+				System.out.println("B+ : " + bPlus);
+				System.out.println("B : " + b);
+				System.out.println("B- : " + bMinus);
+				System.out.println("C+ : " + cPlus);
+				System.out.println("C : " + c);
+				System.out.println("C- : " + cMinus);
+				System.out.println("D : " + d);
+				System.out.println("F : " + f);
 				break;
 
 			default:
