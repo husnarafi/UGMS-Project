@@ -6,7 +6,7 @@ import java.util.Scanner;
  * 
  * Name: Rafi Husna Student ID: 1409853O-I011-0011 Course and Section: Data
  * Structures, LP002 email: husnarafi94@gmail.com
- * 
+ *
  * Description: This program reads the file correctly and stores the student
  * information according to the file.
  ********************************************/
@@ -279,8 +279,8 @@ public class GradingSystemMenu {
 						grade = course.getGrade();
 
 					}
-					System.out.println("Name\t" + std.getSurname() + "," + std.getGivenname() + "\tID\t" + std.getId()
-							+ "\tScore\t" + score + "\tGrade\t" + grade);
+					System.out.println("Name\t" + std.getSurname() + "," + std.getGivenname() + "ID\t" + std.getId()
+							+ "Score\t" + score + "Grade\t" + grade);
 				}
 
 				break;
