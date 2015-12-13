@@ -51,7 +51,7 @@ public class QueryManager {
 	public Bag<Student> findStudentsByMinGpa(float gpa, Bag<Student> studentBag) {
 		Bag<Student> students = new Bag<Student>();
 		for (Student std : studentBag) {
-			if (std.getGpa() > gpa) {
+			if (std.getGpa() >= gpa) {
 				students.add(std);
 			}
 		}
